@@ -14,12 +14,19 @@ npx wrangler dev
 
 ## Deploy
 
+Pushing to `main` deploys automatically through GitHub Actions
+(`.github/workflows/deploy.yml`). The workflow needs two repository secrets:
+`CLOUDFLARE_API_TOKEN` (a token from the "Edit Cloudflare Workers" template) and
+`CLOUDFLARE_ACCOUNT_ID`.
+
+To deploy by hand:
+
 ```sh
 npx wrangler deploy
 ```
 
-Deploys to Cloudflare Workers static assets with `loopback.ardenlab.dev` as a custom
-domain (see `wrangler.jsonc`).
+Either way it deploys to Cloudflare Workers static assets with `loopback.ardenlab.dev`
+as a custom domain (see `wrangler.jsonc`).
 
 ## Notes
 
