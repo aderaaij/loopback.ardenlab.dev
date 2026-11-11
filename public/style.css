@@ -1,0 +1,439 @@
+/* Loopback — loopback.ardenlab.dev
+   Tokens mirror the app's design system (DesignSystem/Theme.swift). Dark only, like the app. */
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/fonts/SpaceGrotesk-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("/fonts/HankenGrotesk-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("/fonts/HankenGrotesk-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/JetBrainsMono-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+  --bg: #0c0a09;
+  --surface: #131009;
+  --surface-tile: #211c15;
+  --text: #f2ece0;
+  --text-bright: #c9c1b4;
+  --text-secondary: #9a9286;
+  --text-muted: #6f675b;
+  --accent: #ff6a3d;
+  --amber: #e8a33d;
+  --line: rgba(245, 235, 220, 0.07);
+  --line-strong: rgba(245, 235, 220, 0.12);
+  --display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --body: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --gutter: clamp(16px, 5vw, 40px);
+  --measure: 66ch;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-bright);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--text);
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+a:hover {
+  color: var(--accent);
+}
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ---------- header / footer ---------- */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  text-decoration: none;
+}
+.brand img {
+  width: 38px;
+  height: auto;
+  display: block;
+}
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  font-family: var(--mono);
+  font-size: 13px;
+}
+.site-nav a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: var(--text);
+}
+
+.site-footer {
+  margin-top: 96px;
+  border-top: 1px solid var(--line);
+  padding-top: 28px;
+  padding-bottom: 48px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px 32px;
+}
+.site-footer p {
+  margin: 0;
+  max-width: 52ch;
+}
+.site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+/* ---------- shared type ---------- */
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.label {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  background: var(--surface-tile);
+  padding: 0.1em 0.4em;
+  border-radius: 6px;
+  color: var(--text);
+}
+
+/* ---------- landing ---------- */
+
+.hero {
+  padding-top: clamp(40px, 9vw, 104px);
+  padding-bottom: clamp(48px, 8vw, 88px);
+}
+.hero h1 {
+  font-size: clamp(2.5rem, 8.2vw, 5.25rem);
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  max-width: 13ch;
+  margin-top: 20px;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+.hero .lede {
+  font-size: clamp(1.06rem, 2.2vw, 1.3rem);
+  line-height: 1.5;
+  max-width: 54ch;
+  margin: 28px 0 0;
+  color: var(--text-bright);
+}
+
+.notice {
+  margin-top: 36px;
+  max-width: 62ch;
+  border: 1px solid var(--line-strong);
+  border-left: 3px solid var(--amber);
+  border-radius: 14px;
+  background: var(--surface);
+  padding: 16px 20px;
+}
+.notice strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.notice p {
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 0 20px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  background: var(--surface);
+}
+.button:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+.button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #1a0d06;
+}
+.button.primary:hover {
+  background: #ff7d55;
+  color: #1a0d06;
+}
+
+.section {
+  padding-top: clamp(48px, 8vw, 88px);
+}
+.section > h2 {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  margin-top: 12px;
+  max-width: 22ch;
+}
+.section > .intro {
+  max-width: 60ch;
+  margin: 16px 0 0;
+}
+
+/* The loop: an ordered sequence that really does return to its start. */
+.loop {
+  list-style: none;
+  counter-reset: step;
+  margin: 36px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.loop li {
+  counter-increment: step;
+  background: var(--bg);
+  padding: 24px 22px 26px;
+}
+.loop li::before {
+  content: counter(step, decimal-leading-zero);
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--accent);
+}
+.loop h3 {
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  margin: 10px 0 8px;
+}
+.loop p {
+  margin: 0;
+  font-size: 15.5px;
+  color: var(--text-secondary);
+}
+.loop-return {
+  margin: 14px 0 0;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.loop-return span {
+  color: var(--accent);
+}
+
+/* Data domains */
+.domains {
+  margin: 36px 0 0;
+  border-top: 1px solid var(--line-strong);
+}
+.domains div {
+  display: grid;
+  grid-template-columns: minmax(120px, 200px) 1fr;
+  gap: 4px 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.domains dt {
+  font-family: var(--display);
+  font-weight: 700;
+  color: var(--text);
+}
+.domains dt small {
+  display: block;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.domains dd {
+  margin: 0;
+  color: var(--text-secondary);
+}
+@media (max-width: 520px) {
+  .domains div {
+    grid-template-columns: 1fr;
+  }
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 32px 48px;
+  margin-top: 32px;
+}
+.columns h3 {
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+.columns p {
+  margin: 0 0 10px;
+  color: var(--text-secondary);
+}
+
+/* ---------- document pages (privacy, support) ---------- */
+
+.doc {
+  padding-top: clamp(32px, 6vw, 72px);
+  max-width: calc(var(--measure) + 2 * var(--gutter));
+}
+.doc h1 {
+  font-size: clamp(2.1rem, 6vw, 3.4rem);
+  letter-spacing: -0.03em;
+  margin-top: 14px;
+}
+.doc .meta {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 18px 0 0;
+}
+.doc .summary {
+  margin: 32px 0 0;
+  padding: 20px 22px;
+  border: 1px solid var(--line-strong);
+  border-radius: 20px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1.06rem;
+}
+.doc .summary p {
+  margin: 0;
+}
+.doc h2 {
+  font-size: 1.45rem;
+  letter-spacing: -0.015em;
+  margin: 52px 0 12px;
+}
+.doc h3 {
+  font-size: 1.08rem;
+  letter-spacing: -0.005em;
+  margin: 28px 0 8px;
+}
+.doc p,
+.doc ul,
+.doc ol {
+  margin: 0 0 16px;
+}
+.doc ul,
+.doc ol {
+  padding-left: 1.2em;
+}
+.doc li {
+  margin-bottom: 8px;
+}
+.doc li::marker {
+  color: var(--accent);
+}
+.doc strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .button,
+  a {
+    transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+  }
+}

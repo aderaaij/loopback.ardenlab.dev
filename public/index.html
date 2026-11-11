@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loopback – Running Coach for your own server</title>
+  <meta name="description" content="Loopback is an open-source iOS running coach that syncs Apple Health to a training server you host yourself. Plans go to your Apple Watch; your data stays with you.">
+  <meta name="theme-color" content="#0c0a09">
+  <meta property="og:title" content="Loopback – Running Coach">
+  <meta property="og:description" content="An open-source iOS running coach that syncs Apple Health to a training server you host yourself.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://loopback.ardenlab.dev/">
+  <link rel="canonical" href="https://loopback.ardenlab.dev/">
+  <link rel="icon" href="/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="wrap site-header">
+    <a class="brand" href="/"><img src="/logo.svg" alt="" width="774" height="346">Loopback</a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="/support/">Support</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="https://github.com/aderaaij/loopback-training-app">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <p class="label">Running coach for iPhone · open source</p>
+      <h1>Your training data, on <em>your</em> server.</h1>
+      <p class="lede">Loopback reads your runs, sleep and recovery from Apple Health and syncs them to a training server you host yourself. An AI coach of your choosing plans against that data, and the next workout lands on your Apple Watch.</p>
+
+      <div class="notice">
+        <p><strong>Loopback needs a server you run.</strong> The app is a client for the open-source Loopback Server. Without one there is nothing to sign in to, and no hosted version exists.</p>
+      </div>
+
+      <div class="actions">
+        <a class="button primary" href="https://github.com/aderaaij/loopback-training-server#quick-start">Set up the server</a>
+        <a class="button" href="https://github.com/aderaaij/loopback-training-app">Get the app from source</a>
+      </div>
+    </section>
+
+    <section class="wrap section" aria-labelledby="loop-title">
+      <p class="label">How it works</p>
+      <h2 id="loop-title">One loop, from plan to run and back.</h2>
+      <ol class="loop">
+        <li>
+          <h3>The coach writes a plan</h3>
+          <p>An AI assistant connected to your server builds a training plan and queues workouts, using your history as context.</p>
+        </li>
+        <li>
+          <h3>The app sends it to your watch</h3>
+          <p>Structured workouts with warm-up, intervals, cooldown and pace or heart-rate alerts are scheduled on Apple Watch.</p>
+        </li>
+        <li>
+          <h3>You run</h3>
+          <p>Apple Watch records the workout as usual. Loopback adds nothing to carry and nothing to start.</p>
+        </li>
+        <li>
+          <h3>The run goes home</h3>
+          <p>Route, splits, heart rate and running dynamics upload to your server in the background, matched to the planned workout.</p>
+        </li>
+        <li>
+          <h3>Recovery fills in the picture</h3>
+          <p>Sleep, resting heart rate, HRV and the other domains you chose sync daily, so the coach sees more than the run itself.</p>
+        </li>
+        <li>
+          <h3>The plan adapts</h3>
+          <p>Missed a session? Say why, then move or skip it. The coach adjusts what comes next.</p>
+        </li>
+      </ol>
+      <p class="loop-return"><span>↺</span> and back to 01.</p>
+    </section>
+
+    <section class="wrap section" aria-labelledby="data-title">
+      <p class="label">What you share</p>
+      <h2 id="data-title">Five domains. Four of them are optional.</h2>
+      <p class="intro">You choose what Loopback reads from Apple Health when you set it up, and you can change it later in Settings. Whatever you share goes to your server and nowhere else. See the <a href="/privacy/">privacy policy</a> for the full list.</p>
+      <dl class="domains">
+        <div>
+          <dt>Training <small>Required</small></dt>
+          <dd>Runs and other workouts, routes, heart rate and effort.</dd>
+        </div>
+        <div>
+          <dt>Recovery <small>Optional</small></dt>
+          <dd>Sleep, resting heart rate, HRV, breathing and blood oxygen.</dd>
+        </div>
+        <div>
+          <dt>Body <small>Optional</small></dt>
+          <dd>Weight, body composition and VO₂ max.</dd>
+        </div>
+        <div>
+          <dt>Daily activity <small>Optional</small></dt>
+          <dd>Steps and energy burned across the day.</dd>
+        </div>
+        <div>
+          <dt>Nutrition <small>Optional</small></dt>
+          <dd>Food and drink you log in other apps.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="wrap section" aria-labelledby="get-title">
+      <p class="label">Get started</p>
+      <h2 id="get-title">Two pieces, both open source.</h2>
+      <div class="columns">
+        <div>
+          <h3>Loopback Server</h3>
+          <p>A FastAPI and PostgreSQL service that runs in Docker on a home server, NAS or VPS. It stores your training, serves a web dashboard and exposes an MCP endpoint for your AI assistant.</p>
+          <p><a href="https://github.com/aderaaij/loopback-training-server">loopback-training-server on GitHub</a></p>
+        </div>
+        <div>
+          <h3>Loopback for iPhone</h3>
+          <p>Requires iOS 26. Today you build it from source with Xcode 26; a TestFlight build is on the way. An Apple Watch is needed for scheduled workouts.</p>
+          <p><a href="https://github.com/aderaaij/loopback-training-app">loopback-training-app on GitHub</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap site-footer">
+    <p>Loopback is an independent open-source project by Arden de Raaij, released under the MIT licence. Apple Watch and Apple Health are trademarks of Apple Inc.</p>
+    <nav aria-label="Footer">
+      <a href="/support/">Support</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="https://github.com/aderaaij/loopback-training-app">App source</a>
+      <a href="https://github.com/aderaaij/loopback-training-server">Server source</a>
+    </nav>
+  </footer>
+</body>
+</html>

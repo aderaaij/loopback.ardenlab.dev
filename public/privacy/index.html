@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy – Loopback</title>
+  <meta name="description" content="What the Loopback iOS app reads from Apple Health, where it sends it, and what the developer receives (nothing).">
+  <meta name="theme-color" content="#0c0a09">
+  <link rel="canonical" href="https://loopback.ardenlab.dev/privacy/">
+  <link rel="icon" href="/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="wrap site-header">
+    <a class="brand" href="/"><img src="/logo.svg" alt="" width="774" height="346">Loopback</a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="/support/">Support</a>
+      <a href="/privacy/" aria-current="page">Privacy</a>
+      <a href="https://github.com/aderaaij/loopback-training-app">GitHub</a>
+    </nav>
+  </header>
+
+  <main class="wrap doc">
+    <p class="label">Loopback – Running Coach for iOS</p>
+    <h1>Privacy Policy</h1>
+    <p class="meta">Effective 10 November 2026</p>
+
+    <div class="summary">
+      <p>Loopback sends your health and training data to one place: the server whose address you type into the app. That server is run by you, or by someone you trust, and not by the developer. The developer of Loopback receives none of your data, and the app contains no analytics, advertising or tracking.</p>
+    </div>
+
+    <h2>Who this policy covers</h2>
+    <p>This policy covers the Loopback iOS app ("the app"), published by Arden de Raaij ("the developer"). It does not cover the Loopback Server you connect the app to. Whoever operates that server decides how the data on it is stored, secured and shared. If that is not you, ask them.</p>
+
+    <h2>What the app reads from Apple Health</h2>
+    <p>The app asks for read access to Apple Health, grouped into five domains. Training is required for the app to work. You choose the other four during setup and can switch them on or off later under Settings in the app. The app only requests the Health types for the domains you have turned on.</p>
+    <ul>
+      <li><strong>Training (required):</strong> workouts of all types with their duration, distance and energy; workout routes, which contain GPS location recorded during the workout; heart rate; running speed, power, stride length, vertical oscillation and ground contact time; walking and running distance; and workout effort ratings.</li>
+      <li><strong>Recovery:</strong> sleep duration and sleep stages, resting heart rate, heart rate variability, respiratory rate and blood oxygen.</li>
+      <li><strong>Body:</strong> weight, body fat percentage, lean body mass and VO₂ max.</li>
+      <li><strong>Daily activity:</strong> step count, active energy and resting (basal) energy.</li>
+      <li><strong>Nutrition:</strong> food and drink logged in other apps: energy, protein, carbohydrates, fat, saturated fat, fibre, sugar, sodium, cholesterol, potassium, calcium, iron, magnesium, vitamin C, caffeine and water.</li>
+    </ul>
+    <p>The App Store version of the app does not write anything to Apple Health. It does schedule planned workouts on your Apple Watch through Apple's WorkoutKit, if you allow it.</p>
+
+    <h2>Other information the app handles</h2>
+    <ul>
+      <li><strong>Your server address and sign-in:</strong> the address of your Loopback Server and the username and password you enter. The password is sent to your server to sign in and is not stored on the phone. The access token your server returns is stored in the iOS Keychain on your device.</li>
+      <li><strong>Training plan and feedback:</strong> the plans and workouts the app downloads from your server, and what you enter in the app, such as why you missed a workout or whether you moved or skipped one.</li>
+      <li><strong>Settings:</strong> your preferences and sync bookkeeping, stored on your device.</li>
+      <li><strong>A diagnostic network log:</strong> a record of the app's recent requests to your server, kept on your device so you can troubleshoot a connection. It is not sent anywhere.</li>
+    </ul>
+
+    <h2>Where your data goes</h2>
+    <p>The app sends the data above to the Loopback Server at the address you configured, and to no other destination. The developer does not operate that server and has no access to it or to your data. There is no developer-run cloud service, account system or backup behind the app.</p>
+    <p>The app does not store your Apple Health data in iCloud.</p>
+
+    <h3>AI coaching</h3>
+    <p>The app itself does not send data to any AI provider. The Loopback Server can expose your data to an AI assistant that you, or your server's operator, choose to connect to it. If you do that, the data the assistant requests is processed by that assistant's provider under their terms. The domain choices you make in the app are passed to your server so that it can limit what the coach is offered, but the server operator ultimately controls what the server does.</p>
+
+    <h3>Connection security</h3>
+    <p>The app lets you connect to your server over HTTPS or plain HTTP, because many self-hosted servers sit on a private network such as a home LAN or a VPN. Data sent over plain HTTP is not encrypted by the app. Use HTTPS, or an encrypted private network, whenever the connection leaves a network you control.</p>
+
+    <h2>What the developer collects</h2>
+    <p>Nothing. The app has no analytics, no advertising, no tracking and no third-party SDKs that transmit data. Your health data is never used for advertising, marketing or data mining, and it is never sold or shared with data brokers.</p>
+    <p>Two things are handled by Apple, under Apple's own privacy policy, and reach the developer only if you choose to share them:</p>
+    <ul>
+      <li>If you install the app through TestFlight, Apple may share crash reports and any feedback or screenshots you submit, along with the email address you used if you were invited by email.</li>
+      <li>If you have enabled "Share with App Developers" in iOS settings, Apple provides aggregated, non-identifying crash and usage statistics.</li>
+    </ul>
+    <p>If you contact the developer for support, by email or through a GitHub issue, the developer sees whatever you choose to include, including your email address if you write by email. Please do not post health data or server credentials in a public issue.</p>
+
+    <h2>How long data is kept, and how to delete it</h2>
+    <ul>
+      <li><strong>On your phone:</strong> signing out in the app removes your access token. Deleting the app removes everything it stored on the device.</li>
+      <li><strong>In Apple Health:</strong> the app does not change or delete your Health data. You can withdraw the app's access at any time in the Health app under Sharing, or in iOS Settings.</li>
+      <li><strong>On your server:</strong> data already synced stays on your Loopback Server until it is deleted there. Turning a domain off in the app stops further syncing of that domain. Deleting what is already stored is done on the server, by you or its operator.</li>
+    </ul>
+    <p>Because the developer holds no data about you, there is nothing for the developer to export, correct or erase. Requests about data on a server should go to the person who operates it.</p>
+
+    <h2>The review demo server</h2>
+    <p>For App Store and TestFlight review, the developer may temporarily run a demonstration server containing synthetic data for a fictional athlete. It is intended for Apple's reviewers. Do not sign in to it with the app on a device holding your real Health data, as the app would sync that data to it.</p>
+
+    <h2>Children</h2>
+    <p>The app is not directed at children under 13, and the developer does not knowingly collect information from anyone, including children.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If the app starts handling data differently, this page will be updated and the effective date above will change. The history of this page is public in the project's source repository.</p>
+
+    <h2>Contact</h2>
+    <p>Questions about this policy can be sent to <a href="mailto:loopback@ardenlab.dev">loopback@ardenlab.dev</a>, or raised through the <a href="https://github.com/aderaaij/loopback-training-app/issues">app's issue tracker on GitHub</a>. See the <a href="/support/">support page</a> for other help.</p>
+  </main>
+
+  <footer class="wrap site-footer">
+    <p>Loopback is an independent open-source project by Arden de Raaij, released under the MIT licence. Apple Watch and Apple Health are trademarks of Apple Inc.</p>
+    <nav aria-label="Footer">
+      <a href="/">Home</a>
+      <a href="/support/">Support</a>
+      <a href="https://github.com/aderaaij/loopback-training-app">App source</a>
+      <a href="https://github.com/aderaaij/loopback-training-server">Server source</a>
+    </nav>
+  </footer>
+</body>
+</html>
