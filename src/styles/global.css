@@ -437,3 +437,113 @@ code {
     transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
   }
 }
+
+/* ---------- motion ---------- */
+
+/* The "How it works" track. The runner and the lit steps are driven by scripts/motion.ts.
+   Hidden on narrow screens, where it would scroll away before the steps do. */
+.track {
+  display: none;
+  width: 100%;
+  height: auto;
+  margin-top: 40px;
+  overflow: visible;
+}
+@media (min-width: 720px) {
+  .track {
+    display: block;
+  }
+  .track + .loop {
+    margin-top: 28px;
+  }
+}
+.track path {
+  fill: none;
+  stroke-width: 2;
+}
+.track-base {
+  stroke: var(--line-strong);
+}
+.track-progress {
+  stroke: var(--accent);
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.track-stop circle {
+  fill: var(--bg);
+  stroke: var(--text-muted);
+  stroke-width: 2;
+}
+.track-stop text {
+  font-family: var(--mono);
+  font-size: 13px;
+  fill: var(--text-muted);
+}
+.track-stop.is-passed circle {
+  stroke: var(--accent);
+}
+.track-stop.is-passed text {
+  fill: var(--text);
+}
+.track-dot {
+  fill: var(--accent);
+  filter: drop-shadow(0 0 8px rgba(255, 106, 61, 0.7));
+}
+
+.loop li.is-active {
+  background: var(--surface);
+  box-shadow: inset 0 2px 0 var(--accent);
+}
+.loop-return span {
+  display: inline-block;
+}
+.loop-return.is-active {
+  color: var(--text);
+}
+.loop-return.is-active span {
+  transform: rotate(-360deg);
+}
+
+/* Elements the motion script reveals start hidden. The `motion` class is only set when
+   the script will run (see the inline script in layouts/Base.astro). */
+.motion [data-enter] > :not(.shown),
+.motion [data-reveal]:not([data-reveal="children"], .shown),
+.motion [data-reveal="children"] > :not(.shown) {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Cross-fade between pages where the browser supports it. */
+  @view-transition {
+    navigation: auto;
+  }
+
+  .button {
+    transition:
+      color 0.15s ease,
+      border-color 0.15s ease,
+      background-color 0.15s ease,
+      transform 0.15s ease;
+  }
+  .button:hover {
+    transform: translateY(-2px);
+  }
+  .button:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  .loop li,
+  .track-stop circle,
+  .track-stop text,
+  .loop-return {
+    transition:
+      background-color 0.3s ease,
+      box-shadow 0.3s ease,
+      stroke 0.3s ease,
+      fill 0.3s ease,
+      color 0.3s ease;
+  }
+  .loop-return span {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}

@@ -1,32 +1,35 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Loopback – Running Coach for your own server</title>
-  <meta name="description" content="Loopback is an open-source iOS running coach that syncs Apple Health to a training server you host yourself. Plans go to your Apple Watch; your data stays with you.">
-  <meta name="theme-color" content="#0c0a09">
-  <meta property="og:title" content="Loopback – Running Coach">
-  <meta property="og:description" content="An open-source iOS running coach that syncs Apple Health to a training server you host yourself.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://loopback.ardenlab.dev/">
-  <link rel="canonical" href="https://loopback.ardenlab.dev/">
-  <link rel="icon" href="/logo.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-  <header class="wrap site-header">
-    <a class="brand" href="/"><img src="/logo.svg" alt="" width="774" height="346">Loopback</a>
-    <nav class="site-nav" aria-label="Site">
-      <a href="/support/">Support</a>
-      <a href="/privacy/">Privacy</a>
-      <a href="https://github.com/aderaaij/loopback-training-app">GitHub</a>
-    </nav>
-  </header>
+---
+import Base from "../layouts/Base.astro";
+
+// Six stops spaced evenly along the track's length, clockwise from the top left.
+// The track is a 820-long straight, a half circle of radius 60, and the same again back.
+const stops = [
+  { x: 70, y: 10 },
+  { x: 406, y: 10 },
+  { x: 742, y: 10 },
+  { x: 890, y: 130 },
+  { x: 554, y: 130 },
+  { x: 218, y: 130 },
+].map((stop, i) => ({ ...stop, label: String(i + 1).padStart(2, "0") }));
+---
+
+<Base
+  title="Loopback – Running Coach for your own server"
+  description="Loopback is an open-source iOS running coach that syncs Apple Health to a training server you host yourself. Plans go to your Apple Watch; your data stays with you."
+  path="/"
+>
+  <Fragment slot="head">
+    <meta property="og:title" content="Loopback – Running Coach" />
+    <meta
+      property="og:description"
+      content="An open-source iOS running coach that syncs Apple Health to a training server you host yourself."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://loopback.ardenlab.dev/" />
+  </Fragment>
 
   <main>
-    <section class="wrap hero">
+    <section class="wrap hero" data-enter>
       <p class="label">Running coach for iPhone · open source</p>
       <h1>Your training data, on <em>your</em> server.</h1>
       <p class="lede">Loopback reads your runs, sleep and recovery from Apple Health and syncs them to a training server you host yourself. An AI coach of your choosing plans against that data, and the next workout lands on your Apple Watch.</p>
@@ -42,9 +45,22 @@
     </section>
 
     <section class="wrap section" aria-labelledby="loop-title">
-      <p class="label">How it works</p>
-      <h2 id="loop-title">One loop, from plan to run and back.</h2>
-      <ol class="loop">
+      <p class="label" data-reveal>How it works</p>
+      <h2 data-reveal id="loop-title">One loop, from plan to run and back.</h2>
+      <svg class="track" viewBox="0 0 960 140" aria-hidden="true" data-reveal>
+        <path class="track-base" d="M70 10 H890 A60 60 0 0 1 890 130 H70 A60 60 0 0 1 70 10 Z"></path>
+        <path class="track-progress" pathLength="1" d="M70 10 H890 A60 60 0 0 1 890 130 H70 A60 60 0 0 1 70 10 Z"></path>
+        {
+          stops.map((stop) => (
+            <g class="track-stop">
+              <circle cx={stop.x} cy={stop.y} r="4" />
+              <text x={stop.x} y={stop.y === 10 ? 40 : 108} text-anchor="middle">{stop.label}</text>
+            </g>
+          ))
+        }
+        <circle class="track-dot" cx="70" cy="10" r="7"></circle>
+      </svg>
+      <ol class="loop" data-reveal="children">
         <li>
           <h3>The coach writes a plan</h3>
           <p>An AI assistant connected to your server builds a training plan and queues workouts, using your history as context.</p>
@@ -70,14 +86,14 @@
           <p>Missed a session? Say why, then move or skip it. The coach adjusts what comes next.</p>
         </li>
       </ol>
-      <p class="loop-return"><span>↺</span> and back to 01.</p>
+      <p class="loop-return" data-reveal><span>↺</span> and back to 01.</p>
     </section>
 
     <section class="wrap section" aria-labelledby="data-title">
-      <p class="label">What you share</p>
-      <h2 id="data-title">Five domains. Four of them are optional.</h2>
-      <p class="intro">You choose what Loopback reads from Apple Health when you set it up, and you can change it later in Settings. Whatever you share goes to your server and nowhere else. See the <a href="/privacy/">privacy policy</a> for the full list.</p>
-      <dl class="domains">
+      <p class="label" data-reveal>What you share</p>
+      <h2 data-reveal id="data-title">Five domains. Four of them are optional.</h2>
+      <p class="intro" data-reveal>You choose what Loopback reads from Apple Health when you set it up, and you can change it later in Settings. Whatever you share goes to your server and nowhere else. See the <a href="/privacy/">privacy policy</a> for the full list.</p>
+      <dl class="domains" data-reveal="children">
         <div>
           <dt>Training <small>Required</small></dt>
           <dd>Runs and other workouts, routes, heart rate and effort.</dd>
@@ -102,9 +118,9 @@
     </section>
 
     <section class="wrap section" aria-labelledby="get-title">
-      <p class="label">Get started</p>
-      <h2 id="get-title">Two pieces, both open source.</h2>
-      <div class="columns">
+      <p class="label" data-reveal>Get started</p>
+      <h2 data-reveal id="get-title">Two pieces, both open source.</h2>
+      <div class="columns" data-reveal="children">
         <div>
           <h3>Loopback Server</h3>
           <p>A FastAPI and PostgreSQL service that runs in Docker on a home server, NAS or VPS. It stores your training, serves a web dashboard and exposes an MCP endpoint for your AI assistant.</p>
@@ -118,15 +134,4 @@
       </div>
     </section>
   </main>
-
-  <footer class="wrap site-footer">
-    <p>Loopback is an independent open-source project by Arden de Raaij, released under the MIT licence. Apple Watch and Apple Health are trademarks of Apple Inc.</p>
-    <nav aria-label="Footer">
-      <a href="/support/">Support</a>
-      <a href="/privacy/">Privacy</a>
-      <a href="https://github.com/aderaaij/loopback-training-app">App source</a>
-      <a href="https://github.com/aderaaij/loopback-training-server">Server source</a>
-    </nav>
-  </footer>
-</body>
-</html>
+</Base>

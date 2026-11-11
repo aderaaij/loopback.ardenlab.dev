@@ -1,0 +1,15 @@
+---
+import Base from "./Base.astro";
+
+// Layout for the Markdown pages (privacy, support). Fields come from the page's frontmatter.
+const { title, description, path, label, heading, effective } = Astro.props.frontmatter;
+---
+
+<Base title={title} description={description} path={path}>
+  <main class="wrap doc" data-enter>
+    <p class="label">{label}</p>
+    <h1>{heading}</h1>
+    {effective && <p class="meta">Effective {effective}</p>}
+    <div><slot /></div>
+  </main>
+</Base>

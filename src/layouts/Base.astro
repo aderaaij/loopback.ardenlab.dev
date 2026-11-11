@@ -1,0 +1,78 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Path of this page, used for the canonical URL and to mark the current nav item. Omit on the 404 page. */
+  path?: string;
+  footer?: boolean;
+}
+
+const { title, description, path, footer = true } = Astro.props;
+const canonical = path ? new URL(path, Astro.site).href : undefined;
+
+const app = "https://github.com/aderaaij/loopback-training-app";
+const server = "https://github.com/aderaaij/loopback-training-server";
+
+const footerLinks = [
+  { href: "/", text: "Home" },
+  { href: "/support/", text: "Support" },
+  { href: "/privacy/", text: "Privacy" },
+].filter((link) => link.href !== path);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <meta name="theme-color" content="#0c0a09" />
+    <slot name="head" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <script is:inline>
+      // Hide animated elements only when the motion script is going to reveal them.
+      // The timeout un-hides everything if that script never runs.
+      if (matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+        const root = document.documentElement;
+        root.classList.add("motion");
+        setTimeout(() => window.__motionReady || root.classList.remove("motion"), 3000);
+      }
+    </script>
+  </head>
+  <body>
+    <header class="wrap site-header">
+      <a class="brand" href="/"><img src="/logo.svg" alt="" width="774" height="346" />Loopback</a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="/support/" aria-current={path === "/support/" ? "page" : undefined}>Support</a>
+        <a href="/privacy/" aria-current={path === "/privacy/" ? "page" : undefined}>Privacy</a>
+        <a href={app}>GitHub</a>
+      </nav>
+    </header>
+
+    <slot />
+
+    {
+      footer && (
+        <footer class="wrap site-footer">
+          <p>
+            Loopback is an independent open-source project by Arden de Raaij, released under the MIT licence. Apple
+            Watch and Apple Health are trademarks of Apple Inc.
+          </p>
+          <nav aria-label="Footer">
+            {footerLinks.map((link) => <a href={link.href}>{link.text}</a>)}
+            <a href={app}>App source</a>
+            <a href={server}>Server source</a>
+          </nav>
+        </footer>
+      )
+    }
+    <script>
+      import "../scripts/motion.ts";
+    </script>
+  </body>
+</html>

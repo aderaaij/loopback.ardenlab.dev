@@ -4,12 +4,23 @@ The website for [Loopback – Running Coach](https://github.com/aderaaij/loopbac
 landing page, [privacy policy](https://loopback.ardenlab.dev/privacy/) and
 [support](https://loopback.ardenlab.dev/support/).
 
-Plain static HTML in `public/`, no build step.
+An [Astro](https://astro.build) site that builds to static HTML in `dist/`. No UI
+framework: the pages are Astro components and Markdown, and the animation is a small
+script using [Motion](https://motion.dev).
 
-## Preview
+- `src/pages/index.astro` is the landing page; `privacy.md` and `support.md` are
+  Markdown rendered through `src/layouts/Doc.astro`.
+- `src/layouts/Base.astro` holds the shared head, header and footer.
+- `src/scripts/motion.ts` does the entrance and scroll animation. It is skipped under
+  `prefers-reduced-motion`, and the pages are complete without it.
+- `public/` holds files served as they are (fonts, logo, icons).
+
+## Develop
 
 ```sh
-npx wrangler dev
+npm install
+npm run dev       # Astro dev server with live reload
+npm run preview   # build, then serve dist/ through wrangler as Cloudflare would
 ```
 
 ## Deploy
@@ -22,7 +33,7 @@ Pushing to `main` deploys automatically through GitHub Actions
 To deploy by hand:
 
 ```sh
-npx wrangler deploy
+npm run deploy
 ```
 
 Either way it deploys to Cloudflare Workers static assets with `loopback.ardenlab.dev`
