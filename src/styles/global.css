@@ -91,6 +91,8 @@ a:focus-visible {
 /* ---------- header / footer ---------- */
 
 .site-header {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -189,8 +191,36 @@ code {
 /* ---------- landing ---------- */
 
 .hero {
+  position: relative;
+  isolation: isolate;
   padding-top: clamp(40px, 9vw, 104px);
   padding-bottom: clamp(48px, 8vw, 88px);
+}
+/* The footage runs up behind the site header. */
+.hero .backdrop {
+  top: -120px;
+}
+.hero .backdrop::after {
+  background:
+    linear-gradient(to bottom, var(--bg), transparent 30%, transparent 55%, var(--bg)),
+    linear-gradient(to right, rgba(12, 10, 9, 0.88) 20%, rgba(12, 10, 9, 0.35));
+}
+.hero-grid {
+  display: grid;
+  gap: 56px;
+}
+.hero-device .phone {
+  width: min(68vw, 280px);
+  margin: 0 auto;
+}
+@media (min-width: 860px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr) 300px;
+    align-items: center;
+  }
+  .hero-device .phone {
+    width: 300px;
+  }
 }
 .hero h1 {
   font-size: clamp(2.5rem, 8.2vw, 5.25rem);
@@ -317,6 +347,171 @@ code {
 }
 .loop-return span {
   color: var(--accent);
+}
+
+/* ---------- footage ---------- */
+
+/* A clip behind a section, dimmed and faded into the page so text over it stays readable.
+   Until scripts/motion.ts plays it (and whenever it doesn't) the video shows its poster. */
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+.backdrop video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+  filter: saturate(0.85);
+}
+.backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.interlude {
+  position: relative;
+  isolation: isolate;
+  margin-top: clamp(64px, 10vw, 112px);
+  padding: clamp(140px, 24vw, 280px) 0 clamp(32px, 5vw, 56px);
+}
+.interlude .backdrop::after {
+  background:
+    linear-gradient(to bottom, var(--bg), transparent 28%, transparent 45%, var(--bg)),
+    linear-gradient(to right, rgba(12, 10, 9, 0.6), transparent 70%);
+}
+.interlude video {
+  object-position: 50% 70%;
+}
+
+/* ---------- screenshots ---------- */
+
+/* An iPhone drawn round a 1320 × 2868 capture. `.phone` takes its width from where it is
+   used; everything inside is a percentage of that, so the frame scales with it. */
+.phone {
+  position: relative;
+}
+.phone-body {
+  position: relative;
+  padding: 3.2%;
+  border-radius: 14.8% / 7.06%;
+  background: linear-gradient(140deg, #4a4338, #1b1711 30%, #15110c 70%, #332d24);
+  box-shadow:
+    0 0 0 1px rgba(245, 235, 220, 0.16),
+    0 40px 70px -30px rgba(0, 0, 0, 0.9);
+}
+/* Side buttons: action and volume on the left, power on the right. */
+.phone-body::before,
+.phone-body::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 1.2%;
+}
+.phone-body::before {
+  left: -0.8%;
+  top: 16.5%;
+  height: 20%;
+  border-radius: 2px 0 0 2px;
+  background: linear-gradient(to bottom, #3a342b 16%, transparent 16% 31%, #3a342b 31% 62%, transparent 62% 69%, #3a342b 69%);
+}
+.phone-body::after {
+  right: -0.8%;
+  top: 24%;
+  height: 11%;
+  border-radius: 0 2px 2px 0;
+  background: #3a342b;
+}
+.phone-screen {
+  position: relative;
+  aspect-ratio: 1320 / 2868;
+  overflow: hidden;
+  border-radius: 12.4% / 5.71%;
+  background: #000;
+}
+.phone-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* The Dynamic Island, which simulator captures leave out. */
+.phone-screen::after {
+  content: "";
+  position: absolute;
+  top: 1.45%;
+  left: 50%;
+  width: 28.6%;
+  height: 3.87%;
+  translate: -50% 0;
+  border-radius: 999px;
+  background: #000;
+}
+
+/* A row you swipe through on a phone, three across on anything wider. */
+.screens {
+  list-style: none;
+  margin: 36px calc(-1 * var(--gutter)) 0;
+  padding: 4px var(--gutter) 24px;
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  scrollbar-width: none;
+}
+.screens li {
+  flex: 0 0 min(64vw, 260px);
+  scroll-snap-align: start;
+}
+.screens h3 {
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  margin: 24px 0 8px;
+}
+.screens p {
+  margin: 0;
+  font-size: 15.5px;
+  color: var(--text-secondary);
+}
+@media (min-width: 720px) {
+  .screens {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 260px));
+    justify-content: space-between;
+    gap: 40px;
+    overflow: visible;
+    margin-inline: 0;
+    padding: 0;
+  }
+}
+
+.sharing {
+  display: grid;
+  gap: 48px;
+}
+/* Only the switches matter here, so the phone is cut off below them and fades out. */
+.sharing .phone {
+  width: min(64vw, 260px);
+  margin: 0 auto;
+  aspect-ratio: 260 / 430;
+  overflow: hidden;
+  padding: 0 4px;
+  mask-image: linear-gradient(to bottom, #000 86%, transparent);
+}
+@media (min-width: 820px) {
+  .sharing {
+    grid-template-columns: minmax(0, 1fr) 260px;
+    gap: 64px;
+    align-items: start;
+  }
+  .sharing .phone {
+    width: 260px;
+    margin-top: 36px;
+  }
 }
 
 /* Data domains */

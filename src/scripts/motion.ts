@@ -1,4 +1,5 @@
-// Page motion: entrance and scroll reveals, plus the runner on the "How it works" track.
+// Page motion: entrance and scroll reveals, the runner on the "How it works" track, and
+// playback of the background footage.
 // Everything here is skipped under prefers-reduced-motion; the page is complete without it.
 import { inView, scroll, stagger } from "motion";
 import { animate } from "motion/mini";
@@ -32,6 +33,18 @@ if (root.classList.contains("motion")) {
   });
 
   runTrack();
+
+  // Background footage plays only while it is on screen. Without this script, under
+  // reduced motion or with data saving on, each clip stays on its poster frame.
+  const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
+  if (!saveData) {
+    document.querySelectorAll<HTMLVideoElement>("video.clip").forEach((video) => {
+      inView(video, () => {
+        video.play().catch(() => {});
+        return () => video.pause();
+      });
+    });
+  }
 }
 
 /** Moves the runner round the track as the six steps scroll past, lighting each step in turn. */
