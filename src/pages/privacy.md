@@ -5,7 +5,7 @@ description: What the Loopback iOS app reads from Apple Health, where it sends i
 path: /privacy/
 label: Loopback – Running Coach for iOS
 heading: Privacy Policy
-effective: 23 November 2026
+effective: 25 November 2026
 ---
 
 <div class="summary"><p>Loopback sends your health and training data to one place: the server whose address you type into the app. That server is run by you, or by someone you trust, and not by the developer. The developer of Loopback receives none of your data, and the app contains no analytics, advertising or tracking.</p></div>
@@ -30,6 +30,7 @@ The App Store version of the app does not write anything to Apple Health. It doe
 
 - **Your server address and sign-in:** the address of your Loopback Server and the username and password you enter. The password is sent to your server to sign in and is not stored on the phone. The access token your server returns is stored in the iOS Keychain on your device.
 - **Training plan and feedback:** the plans and workouts the app downloads from your server, and what you enter in the app, such as why you missed a workout or whether you moved or skipped one, and any illness or injury you log, with its dates, how bad it was, your notes and how you felt each day.
+- **Fuelling:** if you share Nutrition, the drinks, gels and other products you save in the app, what you record having drunk and eaten on a workout, and what you plan to take on one.
 - **Settings:** your preferences and sync bookkeeping, stored on your device.
 - **A diagnostic network log:** a record of the app's recent requests to your server, kept on your device so you can troubleshoot a connection. It is not sent anywhere.
 
