@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["NS76532L76.dev.ardenlab.loopback"],
+        "components": [
+          {
+            "/": "/connect",
+            "comment": "The QR code in a Loopback Server's dashboard that connects the app to it."
+          },
+          {
+            "/": "/connect/",
+            "comment": "The same, with the trailing slash this site writes its addresses with."
+          }
+        ]
+      }
+    ]
+  }
+}

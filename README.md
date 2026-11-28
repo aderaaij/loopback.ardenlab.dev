@@ -18,6 +18,13 @@ script using [Motion](https://motion.dev).
 - `src/assets/` holds images Astro resizes at build time: the app screenshots and the
   still frames shown before a clip plays.
 - `public/` holds files served as they are (fonts, logo, icons, video).
+- `src/pages/connect.md` is where the QR code in a Loopback Server's dashboard points.
+  With the app installed, iOS opens that link in the app and this page is never loaded:
+  `public/.well-known/apple-app-site-association` is what tells iOS so, and it has to
+  name the app's team and bundle id and the `/connect` path. `public/_headers` gives
+  that file the JSON content type it has no extension to ask for. The page itself is
+  for a phone without the app. It must not read the part of the link after the `#`:
+  that part holds a server address and a one-time code, and stays in the browser.
 
 ## Develop
 

@@ -28,6 +28,14 @@ If you would rather not post publicly, email [loopback@ardenlab.dev](mailto:loop
 - On a home network, iOS asks for permission to find devices on your local network the first time. If you declined, turn it on in iOS Settings → Privacy & Security → Local Network → Loopback.
 - On a VPN or tailnet, make sure the phone is connected to it. Open the server's dashboard address in Safari on the phone to confirm it is reachable.
 
+### Connecting with a QR code
+
+In your server's dashboard, open **Settings → Phone app → Show QR code**. In the app, tap **Scan QR Code** on the sign-in screen and point the phone at the code. The app shows the account and the server it is about to connect to, and connects when you confirm.
+
+- A code works once and for five minutes. If the app says it has expired, choose **New code** in the dashboard and scan again.
+- The phone connects to the address shown under the code, so it has to be able to reach it. If the dashboard is open at `localhost`, enter the server's address on your network there.
+- If the camera does not open, allow it in iOS Settings → Privacy & Security → Camera → Loopback. Signing in with your username and password works as well.
+
 ### I don't have an account
 
 The app does not create accounts. Whoever runs your Loopback Server creates one for you in the server dashboard, and you sign in with those details.

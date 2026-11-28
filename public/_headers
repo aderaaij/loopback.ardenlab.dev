@@ -1,0 +1,4 @@
+# iOS reads this file to learn which links on this site open the Loopback app.
+# It has no extension to tell a server what it is, and Apple asks for JSON.
+/.well-known/apple-app-site-association
+  Content-Type: application/json

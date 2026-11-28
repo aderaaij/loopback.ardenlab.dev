@@ -5,10 +5,10 @@ description: What the Loopback iOS app reads from Apple Health, where it sends i
 path: /privacy/
 label: Loopback – Running Coach for iOS
 heading: Privacy Policy
-effective: 25 November 2026
+effective: 28 November 2026
 ---
 
-<div class="summary"><p>Loopback sends your health and training data to one place: the server whose address you type into the app. That server is run by you, or by someone you trust, and not by the developer. The developer of Loopback receives none of your data, and the app contains no analytics, advertising or tracking.</p></div>
+<div class="summary"><p>Loopback sends your health and training data to one place: the server you connect the app to, by typing its address or by scanning the QR code it shows you. That server is run by you, or by someone you trust, and not by the developer. The developer of Loopback receives none of your data, and the app contains no analytics, advertising or tracking.</p></div>
 
 ## Who this policy covers
 
@@ -28,11 +28,19 @@ The App Store version of the app does not write anything to Apple Health. It doe
 
 ## Other information the app handles
 
-- **Your server address and sign-in:** the address of your Loopback Server and the username and password you enter. The password is sent to your server to sign in and is not stored on the phone. The access token your server returns is stored in the iOS Keychain on your device.
+- **Your server address and sign-in:** the address of your Loopback Server and the username and password you enter. The password is sent to your server to sign in and is not stored on the phone. The access token your server returns is stored in the iOS Keychain on your device. Connecting with a QR code is described below.
 - **Training plan and feedback:** the plans and workouts the app downloads from your server, and what you enter in the app, such as why you missed a workout or whether you moved or skipped one, and any illness or injury you log, with its dates, how bad it was, your notes and how you felt each day.
 - **Fuelling:** if you share Nutrition, the drinks, gels and other products you save in the app, what you record having drunk and eaten on a workout, and what you plan to take on one.
 - **Settings:** your preferences and sync bookkeeping, stored on your device.
 - **A diagnostic network log:** a record of the app's recent requests to your server, kept on your device so you can troubleshoot a connection. It is not sent anywhere.
+
+## Connecting with a QR code
+
+Instead of typing, you can connect the app by scanning the QR code your server's dashboard shows you.
+
+- **Camera:** the app uses the camera only while that scanner is open, and only to read the code. It takes no photos or video, and nothing from the camera is stored or sent anywhere.
+- **What the code holds:** your server's address, your username and a one-time code. The app shows you the address and the account, and when you confirm, sends the one-time code to your server to sign in. As with a password, the access token your server returns is stored in the iOS Keychain.
+- **The link in the code:** the QR code is written as a link to this website, so that iOS opens it in Loopback and in no other app. If it is opened on a device without the app, the browser loads a page of this site that explains how to install it. The server address, username and one-time code come after the `#` in that link, a part browsers do not send, so this site does not receive them.
 
 ## Where your data goes
 
